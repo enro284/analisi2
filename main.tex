@@ -9,7 +9,9 @@
 
 \usepackage[lmargin=71pt, tmargin=1.2in]{geometry}  %For centering solution box
 \usepackage{tikz}
-\usetikzlibrary{mindmap}
+
+\usetikzlibrary{positioning,
+                quotes}
 
 \lhead{Analisi II - Domande teoriche\\}
 \rhead{Enrico Barbuio\\}
@@ -108,10 +110,10 @@
     La frontiera di $A$: $Fr(A)$ è l'insieme delle $x\in X \ : \ \forall r>0, B(x,r)$ contiene sia elementi di $A$ che del suo coniugato.
     
     Ricordo la definizione di aperto: $A$ è aperto se $A = \mathring{A}=\{x \in A \ | \ \exists \ r>0 : B(x,r) \subseteq A\}$.\\ 
-    ($\Longrightarrow$) Se $x \in A$ con $A$ aperto, allora $\exists \ r>0 : B(x,r) \subseteq A$, perciò $\exists \ r>0 : B(x,r) \cap (X \setminus A) = \emptyset$
-    quindi $x \not\in Fr(A)$ $\Longrightarrow A\cap Fr(A) = \emptyset$.\\
+    ($\implies$) Se $x \in A$ con $A$ aperto, allora $\exists \ r>0 : B(x,r) \subseteq A$, perciò $\exists \ r>0 : B(x,r) \cap (X \setminus A) = \emptyset$
+    quindi $x \not\in Fr(A)$ $\implies A\cap Fr(A) = \emptyset$.\\
     ($\Longleftarrow$) Che $ \mathring{A} \subseteq A$ è ovvio. Dimostro che $A \subseteq \mathring{A}$:\\
-    $\forall x \in A, \ x \not\in Fr(A) \quad\Longrightarrow\quad \forall x \in A,\  \exists\  r>0 : $ o $B(x,r) \subseteq A$ o $B(x,r) \subseteq (X\setminus A)$.
+    $\forall x \in A, \ x \not\in Fr(A) \quad\implies\quad \forall x \in A,\  \exists\  r>0 : $ o $B(x,r) \subseteq A$ o $B(x,r) \subseteq (X\setminus A)$.
     Ma la seconda condizione non si può verificare in quanto sicuramente $x \not\in X \setminus A$ quindi deve essere che $B(x,r) \subseteq A$ quindi $x \in \mathring{A}$
 \end{solution}
 
@@ -129,14 +131,14 @@
 
     $x_0 \in A \quad\iff\quad \exists\  \{a_n\}_{n \in N} \subseteq A \ : \ d(a_n,x_0) \xrightarrow{n \rightarrow +\infty} 0$
     
-    ($\Longrightarrow$) se $x_0 \in A$ scelgo $a_k = x ,\ \forall k\in\N$\\
-    se $x_o \in Fr(A)\setminus A$ so che $\forall r>0,\  B(x_0,r)\cap A \not= \emptyset$. Scelgo $a_k \in B(x_0, \frac{1}{k})\cap A$ e ho che $d(a_k,x_0)\leq \frac{1}{k} \xrightarrow{k\rightarrow + \infty} 0 \quad\Longrightarrow\quad a_k \xrightarrow{k\rightarrow + \infty}x_0$
+    ($\implies$) se $x_0 \in A$ scelgo $a_k = x ,\ \forall k\in\N$\\
+    se $x_o \in Fr(A)\setminus A$ so che $\forall r>0,\  B(x_0,r)\cap A \not= \emptyset$. Scelgo $a_k \in B(x_0, \frac{1}{k})\cap A$ e ho che $d(a_k,x_0)\leq \frac{1}{k} \xrightarrow{k\rightarrow + \infty} 0 \quad\implies\quad a_k \xrightarrow{k\rightarrow + \infty}x_0$
     
     
-    ($\Longleftarrow$) \textbf{RAA:} se $x_0 \not\in \overline{A}$ allora $\exists r>0 : B(x_0, r) \cap A = \emptyset$. Dato che $\{a_k\} \subseteq A$, $\exists \epsilon > 0 : \forall k, \  d(a_k,x_0) >\epsilon \quad \Longrightarrow \quad a_k\not \longrightarrow x_0$\\
+    ($\Longleftarrow$) \textbf{RAA:} se $x_0 \not\in \overline{A}$ allora $\exists r>0 : B(x_0, r) \cap A = \emptyset$. Dato che $\{a_k\} \subseteq A$, $\exists \epsilon > 0 : \forall k, \  d(a_k,x_0) >\epsilon \quad \implies \quad a_k\not \implies x_0$\\
     \nota{dim prof diversa:}
     Se $x_0 \in A$ ho fatto.\\
-    Se $x_0\not\in A$ : $\forall r>0,\ \exists n(r) >0 : k> n(r) \Rightarrow a_k \in B(x_0,r)\cap A \not= \emptyset $ inoltre $\{x_0\} \in B(x_0, r)\setminus A \not= \emptyset$ $\quad\Longrightarrow\quad x_0 \in Fr(A)$
+    Se $x_0\not\in A$ : $\forall r>0,\ \exists n(r) >0 : k> n(r) \Rightarrow a_k \in B(x_0,r)\cap A \not= \emptyset $ inoltre $\{x_0\} \in B(x_0, r)\setminus A \not= \emptyset$ $\quad\implies\quad x_0 \in Fr(A)$
 \end{solution}
 
 \question Dare la definizione di limite di una successione in uno spazio metrico. Provare che se il limite esiste, è unico.
@@ -146,7 +148,7 @@
     Siano $l,m \in X : x_n \rightarrow l$ e $x_n \rightarrow m$\\
     $\forall \eta, \exists n_1(\eta),n_2(\eta) \quad:\quad n< n_1(\eta) \Rightarrow  d(x_n,l) < \epsilon $ e $ n< n_2(\eta) \Rightarrow d(x_n,m)< \epsilon$\\
     $d(l,m) < d(l, x_n) + d(x_n, m) < 2\eta$ se $ n> N = \max\{n_1(\eta),n_2{\eta}\}$\\
-    da cui $d(l,m) = 0  \quad\Longrightarrow \quad l=m$
+    da cui $d(l,m) = 0  \quad\implies \quad l=m$
 \end{solution}
 
 \question Sia $A \subseteq X$ spazio metrico. Dare la definizione di punto di accumulazione di $A$. Dare un esempio di punto di accumulazione appartenente ad $A$ e uno di punto di accumulazione non appartenente ad $A$.
@@ -238,7 +240,7 @@ Esempio $f(x) = (0,x)$, $\lim_{x\rightarrow 0} f(x)=(0,0)$.
 \begin{solution}
     Sia $f: A\subseteq X \rightarrow Y$ con $X$ e $Y$ s.m., $f$ è uniformemente continua se $\forall \epsilon>0,  \exists \delta(\epsilon)>0 \ : \ \forall x_0,x_1 \in A$ con $ d(x_0,x_1)<\delta(\epsilon),\ d(f(x_0), f(x_1)) <\epsilon$.
 
-    H-C: se $A$ è compatto, $f\in C(A,Y) \Longrightarrow f \in UC(A,Y)$\\
+    H-C: se $A$ è compatto, $f\in C(A,Y) \implies f \in UC(A,Y)$\\
     \err{DIM!!!}
 \end{solution}
 
@@ -313,7 +315,7 @@ Allora $\int_S d\sigma = \sum_{j=1}^p \int_{S_j} d\sigma$ e $\int_S f(x) d\sigma
     \begin{enumerate}
         \item è limitato e connesso per archi.
         \item $Fr(\Omega) = \cup_{j=1}^p S_j$, con $S_j$ superficie regolare, con bordo, semplice, aperta.
-        \item $i \not= j \ \Longrightarrow\  S_i \cap S_j = \partial S_i \cap \partial S_j$.
+        \item $i \not= j \ \implies\  S_i \cap S_j = \partial S_i \cap \partial S_j$.
         \item $\forall x \in Fr(\Omega), \ \exists r>0 \ : \ B(x,r) \setminus Fr(\Omega) = U_1 \cup U_2$ con $U_1, U_2$ limitati e connessi per archi e tali che $U_1 \subseteq \Omega$ e $U_2 \cap \Omega = \emptyset$
     \end{enumerate}
 
@@ -345,4 +347,49 @@ Siano $\Omega$ e $S_j$ come appena definiti. Per $j=1,\dots,p$ definisco versore
     \]
 \end{solution}    
 \end{questions}
+
+\appendix
+\section*{Formule utili per esercizi}
+\subsection*{Chain rule}
+\[
+D_i(g \circ f) (x_0) = \nabla g(f(x_0)) \cdot D_i f(x_0)
+\]
+
+\subsection*{Potenziali}
+\[
+\nabla U = F \quad \implies \quad \pdv{U}{x_i} = F_i \quad \implies \quad U = \int F_i dx_i + h_i(x_0, \dots, x_{i-1}, x_{i+1}, \dots, x_n)
+\]
+continuo derivando la funzione ottenuta nelle altre variabili, ricavo $h_i$ e ripeto fino ad esaurire le variabili.
+
+\subsection*{campi vettoriali e potenziali}
+Sia $A$ un aperto in $\R^n$
+Un \textbf{campo vettoriale} è una funzione $F: A \to \R^n$ continua.
+Un \textbf{potenziale} di $F$ è una funzione $U \in C^1(A; \R^n)$ tale che $\nabla U = F$.
+
+
+Consideriamo $F \in C^1(A;\R^n)$, questo si dice:
+\begin{itemize}
+    \item \textbf{esatto} se possiede dei potenziali.
+    \item \textbf{chiuso} se $\forall i,j, \ \pdv{F_i}{x_j} = \pdv{F_j}{x_i}$.
+    \item \textbf{conservativo} se $ \int F \cdot d\alpha = \int F \cdot \beta$ con $\alpha$ e $\beta$ cammini positivamente equivalenti.
+\end{itemize}
+
+Valgono le seguenti relazioni:
+\begin{center}    
+\begin{tikzpicture}[node distance = \linewidth/4, centered]
+    
+    \node (esatto){\textbf{esatto}};
+    \node (chiuso)[right = of esatto]{\textbf{chiuso}};
+    \node (conservativo)[right = of chiuso]{\textbf{conservativo}};
+    
+    \draw[double, <->] (conservativo) to node[midway, above]{sempre} (chiuso);
+    \draw[double, ->] (esatto) to node[midway, above]{sempre} (chiuso);
+    \draw[double, ->] (chiuso) to[bend left=20] node[midway, below, text width=5cm, align=center]{$A$ semplicemente connesso (in particolare se $A$ è stellato rispetto a qulche suo punto)} (esatto);
+\end{tikzpicture}
+\end{center}
+    
+Una classe particolare di campi vettoriali sono i \textbf{campi centrali}.
+Sia $A=\R^n \setminus \{0\}$, $F: A \to \R^n$ è un \textbf{campo centrale} se esiste una $g: \R^+ \to \R$ continua tale che $F = g(\norm{x}^2) x$.
+In questo caso non si può applicare alcun teorema perchè $A$ non è semplicemente connesso. Tuttavia i campi centrali sono chiusi e un loro potenziale vale: $U: A \to \R, U(x) = G(\norm{x}^2/2)$
+
 \end{document}
